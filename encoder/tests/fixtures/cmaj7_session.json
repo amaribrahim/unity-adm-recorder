@@ -1,0 +1,49 @@
+{
+  "version": "1.0",
+  "session": {
+    "title": "Cmaj7 fixture",
+    "sampleRate": 48000,
+    "bitDepth": 24,
+    "duration": 30.0,
+    "blockDurationSamples": 2400,
+    "sceneRadius": 20.0
+  },
+  "objects": [
+    {
+      "id": "obj_0001", "name": "C3", "stemFile": "cmaj7_c3.ogg",
+      "gain": 1.0, "start": 0.0, "duration": 30.0,
+      "blocks": [
+        { "rtime": 0.0,  "duration": 10.0, "x": 0.0,   "y": 0.0, "z": 10.0,  "gain": 1.0 },
+        { "rtime": 10.0, "duration": 10.0, "x": 10.0,  "y": 2.0, "z": 0.0,   "gain": 1.0 },
+        { "rtime": 20.0, "duration": 10.0, "x": 0.0,   "y": 4.0, "z": -10.0, "gain": 1.0 }
+      ]
+    },
+    {
+      "id": "obj_0002", "name": "E3", "stemFile": "cmaj7_e3.ogg",
+      "gain": 1.0, "start": 0.0, "duration": 30.0,
+      "blocks": [
+        { "rtime": 0.0,  "duration": 10.0, "x": 10.0,  "y": 0.0, "z": 0.0,   "gain": 1.0 },
+        { "rtime": 10.0, "duration": 10.0, "x": 0.0,   "y": 2.0, "z": -10.0, "gain": 1.0 },
+        { "rtime": 20.0, "duration": 10.0, "x": -10.0, "y": 4.0, "z": 0.0,   "gain": 1.0 }
+      ]
+    },
+    {
+      "id": "obj_0003", "name": "G3", "stemFile": "cmaj7_g3.ogg",
+      "gain": 1.0, "start": 0.0, "duration": 30.0,
+      "blocks": [
+        { "rtime": 0.0,  "duration": 10.0, "x": 0.0,   "y": 0.0, "z": -10.0, "gain": 1.0 },
+        { "rtime": 10.0, "duration": 10.0, "x": -10.0, "y": 2.0, "z": 0.0,   "gain": 1.0 },
+        { "rtime": 20.0, "duration": 10.0, "x": 0.0,   "y": 4.0, "z": 10.0,  "gain": 1.0 }
+      ]
+    },
+    {
+      "id": "obj_0004", "name": "B3", "stemFile": "cmaj7_b3.ogg",
+      "gain": 1.0, "start": 0.0, "duration": 30.0,
+      "blocks": [
+        { "rtime": 0.0,  "duration": 10.0, "x": -10.0, "y": 0.0, "z": 0.0,   "gain": 1.0 },
+        { "rtime": 10.0, "duration": 10.0, "x": 0.0,   "y": 2.0, "z": 10.0,  "gain": 1.0 },
+        { "rtime": 20.0, "duration": 10.0, "x": 10.0,  "y": 4.0, "z": 0.0,   "gain": 1.0 }
+      ]
+    }
+  ]
+}
