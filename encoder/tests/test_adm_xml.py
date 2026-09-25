@@ -150,6 +150,14 @@ def test_adm_time_hours() -> None:
     assert _adm_time(3661.5) == "01:01:01.50000"
 
 
+def test_adm_time_rounds_up_into_next_minute() -> None:
+    assert _adm_time(59.999996) == "00:01:00.00000"
+
+
+def test_adm_time_rounds_up_into_next_hour() -> None:
+    assert _adm_time(3599.999999) == "01:00:00.00000"
+
+
 def test_programme_end_time() -> None:
     root = _parse(build_adm_xml(_make_session(duration=10.0)))
     prog = root.find(f".//{{{NS}}}audioProgramme")

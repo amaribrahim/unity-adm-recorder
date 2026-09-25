@@ -108,6 +108,16 @@ def test_corrupt_stem_is_an_error(tmp_path: Path, capsys: pytest.CaptureFixture)
     assert "error:" in capsys.readouterr().err
 
 
+def test_wrongly_typed_session_is_an_error(tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
+    session = _one_object_session(tmp_path)
+    data = json.loads(session.read_text(encoding="utf-8"))
+    data["session"]["duration"] = None
+    session.write_text(json.dumps(data), encoding="utf-8")
+    rc = main([str(session), "-o", str(tmp_path / "m.wav")])
+    assert rc == 1
+    assert "error:" in capsys.readouterr().err
+
+
 def test_unwritable_output_is_an_error(tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
     blocker = tmp_path / "blocker"
     blocker.write_text("a file, not a folder")

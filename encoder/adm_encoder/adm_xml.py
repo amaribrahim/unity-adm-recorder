@@ -168,7 +168,10 @@ def build_chna(session: Session) -> list[AudioID]:
 
 
 def _adm_time(secs: float) -> str:
-    h = int(secs // 3600)
-    m = int((secs % 3600) // 60)
-    s = secs % 60
-    return f"{h:02d}:{m:02d}:{s:08.5f}"
+    # Round once to the 5-decimal precision ADM uses, then split, so rounding
+    # can never produce a seconds field of 60.
+    units = round(secs * 100_000)
+    whole_secs, frac = divmod(units, 100_000)
+    h, rem = divmod(whole_secs, 3600)
+    m, s = divmod(rem, 60)
+    return f"{h:02d}:{m:02d}:{s:02d}.{frac:05d}"

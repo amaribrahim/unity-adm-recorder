@@ -44,7 +44,7 @@ def main(argv: list[str] | None = None) -> int:
     except KeyError as exc:
         print(f"error: session JSON is missing field {exc}", file=sys.stderr)
         return 1
-    except (OSError, ValueError, RuntimeError) as exc:
+    except (OSError, ValueError, RuntimeError, TypeError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
 

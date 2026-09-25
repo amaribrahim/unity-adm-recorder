@@ -1,4 +1,4 @@
-# Local planning docs — contain private context, never publish
+# Local working notes
 docs/superpowers/
 
 .DS_Store
@@ -7,6 +7,8 @@ __pycache__/
 .venv/
 .pytest_cache/
 *.wav
+build/
+dist/
 
 # Subagent-driven-development scratch workspace
 .superpowers/

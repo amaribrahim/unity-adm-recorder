@@ -155,11 +155,11 @@ namespace AmarIbrahim.AdmRecorder
         private string WriteJson(string json)
         {
             string dir = Path.Combine(SessionLoader.ResolveProjectPath(outputFolder),
-                "session_" + DateTime.Now.ToString("yyyy-MM-dd_HHmmss"));
+                "session_" + DateTime.Now.ToString("yyyy-MM-dd_HHmmss", CultureInfo.InvariantCulture));
 
             Directory.CreateDirectory(dir);
             string path = Path.Combine(dir, "session.json");
-            File.WriteAllText(path, json, Encoding.UTF8);
+            File.WriteAllText(path, json, new UTF8Encoding(false)); // no BOM, so plain JSON readers accept it
             return path;
         }
 

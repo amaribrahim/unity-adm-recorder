@@ -44,9 +44,9 @@ Tested with Unity 6000.4.
    https://github.com/amaribrahim/unity-adm-recorder.git?path=unity/com.amaribrahim.session-recorder
    ```
 2. **Import your stems.** Mono, 48 kHz. Normally WAV exported from your DAW; OGG works too. Give every stem a unique file name.
-3. **Build the rig.** Create an empty GameObject and add **Session Controller**, **Session Recorder** and **Session Playback Driver**, then drag the recorder and driver into the controller's fields. For each stem, add a *child* GameObject with an **AudioSource** (clip = the stem, Spatial Blend = 1, Play On Awake off) and an **Audio Object**. Add **Simple Orbit** to anything you want to circle the listener, or move objects any other way.
+3. **Build the rig.** Create an empty GameObject and add **Session Controller**, **Session Recorder** and **Session Playback Driver**, then drag the recorder and driver into the controller's fields. For each stem, add a *child* GameObject with an **AudioSource** (clip = the stem, Spatial Blend = 1, Play On Awake off) and an **Audio Object**. Give every object a unique name (playback matches objects by name). Add **Simple Orbit** to anything you want to circle the listener, or move objects any other way. Put the AudioListener (on the Main Camera by default) at 0, 0, 0 — the recorded positions are relative to the world origin, so that's where the listener is in the final mix.
 4. **Pick a spatializer (optional).** Choose a spatializer plugin in Project Settings → Audio and tick **Spatialize** on each AudioSource. We used [atmoky trueSpatial](https://www.atmoky.com/). Any spatializer works, since only positions are recorded.
-5. **Press Play.** Recording starts with the stems and stops when the longest one ends. The take is saved as `Assets/Sessions/session_<timestamp>/session.json`. To hear a take again, set the controller's **On Play** to **Play Latest Session** and press Play.
+5. **Press Play.** Recording starts with the stems and stops when the longest one ends. Stay in Play Mode until the Console shows "Session saved to…" — leaving early discards the take. The take is saved as `Assets/Sessions/session_<timestamp>/session.json`. To hear a take again, set the controller's **On Play** to **Play Latest Session** and press Play.
 
 Then encode it, pointing at the folder with your stems:
 
