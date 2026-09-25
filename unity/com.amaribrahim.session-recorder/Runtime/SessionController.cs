@@ -51,8 +51,6 @@ namespace AmarIbrahim.AdmRecorder
 
         private void Start()
         {
-            _sessionDuration = ComputeSessionDuration();
-
             switch (onPlay)
             {
                 case OnPlayAction.Record: StartRecording(); break;
@@ -83,6 +81,7 @@ namespace AmarIbrahim.AdmRecorder
                 Debug.LogError("[AdmRecorder] No AudioObjects found under the SessionController.");
                 return;
             }
+            if (!PrepareTake()) return;
 
             sessionRecorder.BeginRecording(objects, _sessionDuration, blockDurationSamples, sceneRadius);
             ScheduleClips();
@@ -119,6 +118,7 @@ namespace AmarIbrahim.AdmRecorder
                 Debug.LogError("[AdmRecorder] SessionController needs a SessionPlaybackDriver assigned to play back.");
                 return;
             }
+            if (!PrepareTake()) return;
             if (!playbackDriver.LoadLatestSession()) return;
 
             ScheduleClips();
@@ -137,6 +137,18 @@ namespace AmarIbrahim.AdmRecorder
         public void ReceivePositionReport(PositionReport report)
         {
             sessionRecorder.AccumulateBlock(report);
+        }
+
+        // Measures the take from the clips; refuses to start one with nothing to play.
+        private bool PrepareTake()
+        {
+            _sessionDuration = ComputeSessionDuration();
+            if (_sessionDuration <= 0f)
+            {
+                Debug.LogError("[AdmRecorder] No AudioObject has a clip assigned — nothing to record or play.");
+                return false;
+            }
+            return true;
         }
 
         private void ScheduleClips()
