@@ -98,3 +98,19 @@ def test_malformed_session_is_an_error(tmp_path: Path, capsys: pytest.CaptureFix
     rc = main([str(bad), "-o", str(tmp_path / "m.wav")])
     assert rc == 1
     assert "missing field" in capsys.readouterr().err
+
+
+def test_corrupt_stem_is_an_error(tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
+    session = _one_object_session(tmp_path)
+    (tmp_path / "tone.wav").write_bytes(b"not really audio")
+    rc = main([str(session), "-o", str(tmp_path / "m.wav")])
+    assert rc == 1
+    assert "error:" in capsys.readouterr().err
+
+
+def test_unwritable_output_is_an_error(tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
+    blocker = tmp_path / "blocker"
+    blocker.write_text("a file, not a folder")
+    rc = main([str(FIXTURE_SESSION), "--stems-dir", str(DEMO_STEMS), "-o", str(blocker / "m.wav")])
+    assert rc == 1
+    assert "error:" in capsys.readouterr().err
