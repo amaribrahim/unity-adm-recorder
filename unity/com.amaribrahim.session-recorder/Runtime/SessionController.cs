@@ -121,6 +121,13 @@ namespace AmarIbrahim.AdmRecorder
             if (!PrepareTake()) return;
             if (!playbackDriver.LoadLatestSession()) return;
 
+            // The recorded path replaces live motion.
+            foreach (var obj in objects)
+            {
+                var orbit = obj.GetComponent<SimpleOrbit>();
+                if (orbit != null) orbit.enabled = false;
+            }
+
             ScheduleClips();
             playbackDriver.StartDriving(objects, StartDspTime);
         }
