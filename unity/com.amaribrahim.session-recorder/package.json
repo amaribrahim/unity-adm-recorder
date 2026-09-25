@@ -1,0 +1,13 @@
+{
+  "name": "com.amaribrahim.session-recorder",
+  "version": "0.1.0",
+  "displayName": "ADM Session Recorder",
+  "description": "Records AudioSource object positions during playback into a session JSON that the adm-encode tool turns into an ADM BWF (Dolby Atmos-compatible) master. Works with any spatializer. Prototype.",
+  "unity": "6000.0",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "amaribrahim",
+    "url": "https://github.com/amaribrahim/unity-adm-recorder"
+  },
+  "keywords": ["audio", "spatial audio", "atmos", "adm"]
+}
