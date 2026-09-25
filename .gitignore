@@ -1,0 +1,12 @@
+# Local planning docs — contain private context, never publish
+docs/superpowers/
+
+.DS_Store
+__pycache__/
+*.egg-info/
+.venv/
+.pytest_cache/
+*.wav
+
+# Subagent-driven-development scratch workspace
+.superpowers/

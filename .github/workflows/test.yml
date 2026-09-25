@@ -1,0 +1,19 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  encoder:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: encoder
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install ".[dev]"
+      - run: pytest -q

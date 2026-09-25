@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adm-encoder"
+version = "0.1.0"
+description = "Encode a recorded session JSON and mono stems into an ADM BWF (Dolby Atmos-compatible) master."
+license = { text = "Apache-2.0" }
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "ear>=2.1,<3",
+    "lxml",
+    "numpy",
+    "soundfile>=0.12",
+    # ear imports pkg_resources, which setuptools 81+ no longer ships.
+    "setuptools<81",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["adm_encoder*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

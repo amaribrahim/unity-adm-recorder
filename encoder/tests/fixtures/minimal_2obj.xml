@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ebuCoreMain xmlns="urn:ebu:metadata-schema:ebuCore_2016"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="urn:ebu:metadata-schema:ebuCore_2016 ebucore.xsd"
+             xml:lang="en">
+    <coreMetadata>
+        <format>
+            <audioFormatExtended>
+
+                <!-- Programme -->
+                <audioProgramme audioProgrammeID="APR_1001"
+                                audioProgrammeName="Test_Programme"
+                                start="00:00:00.00000"
+                                end="00:00:01.00000">
+                    <audioContentIDRef>ACO_1001</audioContentIDRef>
+                </audioProgramme>
+
+                <!-- Content -->
+                <audioContent audioContentID="ACO_1001" audioContentName="Test_Content">
+                    <audioObjectIDRef>AO_1001</audioObjectIDRef>
+                    <audioObjectIDRef>AO_1002</audioObjectIDRef>
+                    <dialogue mixedContentKind="0">2</dialogue>
+                </audioContent>
+
+                <!-- Objects -->
+                <audioObject audioObjectID="AO_1001" audioObjectName="Test_Obj_1"
+                             start="00:00:00.00000" duration="00:00:01.00000">
+                    <audioPackFormatIDRef>AP_00031001</audioPackFormatIDRef>
+                    <audioTrackUIDRef>ATU_00000001</audioTrackUIDRef>
+                </audioObject>
+                <audioObject audioObjectID="AO_1002" audioObjectName="Test_Obj_2"
+                             start="00:00:00.00000" duration="00:00:01.00000">
+                    <audioPackFormatIDRef>AP_00031002</audioPackFormatIDRef>
+                    <audioTrackUIDRef>ATU_00000002</audioTrackUIDRef>
+                </audioObject>
+
+                <!-- Pack Formats (Objects, typeLabel 0003) -->
+                <audioPackFormat audioPackFormatID="AP_00031001"
+                                 audioPackFormatName="Atmos_Obj_1"
+                                 typeDefinition="Objects" typeLabel="0003">
+                    <audioChannelFormatIDRef>AC_00031001</audioChannelFormatIDRef>
+                </audioPackFormat>
+                <audioPackFormat audioPackFormatID="AP_00031002"
+                                 audioPackFormatName="Atmos_Obj_2"
+                                 typeDefinition="Objects" typeLabel="0003">
+                    <audioChannelFormatIDRef>AC_00031002</audioChannelFormatIDRef>
+                </audioPackFormat>
+
+                <!-- Channel Formats with static block (Cartesian) -->
+                <!-- Object 1: front-left -->
+                <audioChannelFormat audioChannelFormatID="AC_00031001"
+                                    audioChannelFormatName="Atmos_Obj_1"
+                                    typeDefinition="Objects" typeLabel="0003">
+                    <audioBlockFormat audioBlockFormatID="AB_00031001_00000001"
+                                      rtime="00:00:00.00000" duration="00:00:01.00000">
+                        <cartesian>1</cartesian>
+                        <position coordinate="X">-0.5</position>
+                        <position coordinate="Y">1.0</position>
+                        <jumpPosition interpolationLength="0.000000">1</jumpPosition>
+                    </audioBlockFormat>
+                </audioChannelFormat>
+                <!-- Object 2: front-right -->
+                <audioChannelFormat audioChannelFormatID="AC_00031002"
+                                    audioChannelFormatName="Atmos_Obj_2"
+                                    typeDefinition="Objects" typeLabel="0003">
+                    <audioBlockFormat audioBlockFormatID="AB_00031002_00000001"
+                                      rtime="00:00:00.00000" duration="00:00:01.00000">
+                        <cartesian>1</cartesian>
+                        <position coordinate="X">0.5</position>
+                        <position coordinate="Y">1.0</position>
+                        <jumpPosition interpolationLength="0.000000">1</jumpPosition>
+                    </audioBlockFormat>
+                </audioChannelFormat>
+
+                <!-- Stream Formats -->
+                <audioStreamFormat audioStreamFormatID="AS_00031001"
+                                   audioStreamFormatName="PCM_Atmos_Obj_1"
+                                   formatDefinition="PCM" formatLabel="0001">
+                    <audioChannelFormatIDRef>AC_00031001</audioChannelFormatIDRef>
+                    <audioPackFormatIDRef>AP_00031001</audioPackFormatIDRef>
+                    <audioTrackFormatIDRef>AT_00031001_01</audioTrackFormatIDRef>
+                </audioStreamFormat>
+                <audioStreamFormat audioStreamFormatID="AS_00031002"
+                                   audioStreamFormatName="PCM_Atmos_Obj_2"
+                                   formatDefinition="PCM" formatLabel="0001">
+                    <audioChannelFormatIDRef>AC_00031002</audioChannelFormatIDRef>
+                    <audioPackFormatIDRef>AP_00031002</audioPackFormatIDRef>
+                    <audioTrackFormatIDRef>AT_00031002_01</audioTrackFormatIDRef>
+                </audioStreamFormat>
+
+                <!-- Track Formats -->
+                <audioTrackFormat audioTrackFormatID="AT_00031001_01"
+                                  audioTrackFormatName="PCM_Atmos_Obj_1"
+                                  formatDefinition="PCM" formatLabel="0001">
+                    <audioStreamFormatIDRef>AS_00031001</audioStreamFormatIDRef>
+                </audioTrackFormat>
+                <audioTrackFormat audioTrackFormatID="AT_00031002_01"
+                                  audioTrackFormatName="PCM_Atmos_Obj_2"
+                                  formatDefinition="PCM" formatLabel="0001">
+                    <audioStreamFormatIDRef>AS_00031002</audioStreamFormatIDRef>
+                </audioTrackFormat>
+
+                <!-- Track UIDs (24-bit, 48kHz) -->
+                <audioTrackUID UID="ATU_00000001" bitDepth="24" sampleRate="48000">
+                    <audioTrackFormatIDRef>AT_00031001_01</audioTrackFormatIDRef>
+                    <audioPackFormatIDRef>AP_00031001</audioPackFormatIDRef>
+                </audioTrackUID>
+                <audioTrackUID UID="ATU_00000002" bitDepth="24" sampleRate="48000">
+                    <audioTrackFormatIDRef>AT_00031002_01</audioTrackFormatIDRef>
+                    <audioPackFormatIDRef>AP_00031002</audioPackFormatIDRef>
+                </audioTrackUID>
+
+            </audioFormatExtended>
+        </format>
+    </coreMetadata>
+</ebuCoreMain>

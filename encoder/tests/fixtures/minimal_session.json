@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "session": {
+    "title": "Minimal Test Session",
+    "sampleRate": 48000,
+    "bitDepth": 24,
+    "duration": 1.0,
+    "blockDurationSamples": 250,
+    "sceneRadius": 20.0
+  },
+  "objects": [
+    {
+      "id": "obj_0001",
+      "name": "Left Object",
+      "stemFile": "stem1.wav",
+      "gain": 1.0,
+      "start": 0.0,
+      "duration": 1.0,
+      "blocks": [
+        { "rtime": 0.0, "duration": 1.0, "x": -14.0, "y": 0.0, "z": 0.0, "gain": 0.8 }
+      ]
+    },
+    {
+      "id": "obj_0002",
+      "name": "Right Object",
+      "stemFile": "stem2.wav",
+      "gain": 1.0,
+      "start": 0.0,
+      "duration": 1.0,
+      "blocks": [
+        { "rtime": 0.0, "duration": 0.5, "x": 14.0, "y": 0.0, "z": 0.0 },
+        { "rtime": 0.5, "duration": 0.5, "x": 0.0, "y": 0.0, "z": 14.0 }
+      ]
+    }
+  ]
+}
