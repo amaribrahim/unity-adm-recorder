@@ -20,10 +20,18 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest"]
 
+[project.scripts]
+adm-encode = "adm_encoder.cli:main"
+
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["adm_encoder*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-filterwarnings = ["ignore::DeprecationWarning"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    # Third-party import-time noise from ear and its pinned attrs; not actionable here.
+    "ignore:Running interpreter doesn't sufficiently support code object introspection:RuntimeWarning",
+    "ignore:pkg_resources is deprecated as an API:UserWarning",
+]
