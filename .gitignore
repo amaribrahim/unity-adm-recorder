@@ -1,6 +1,3 @@
-# Local working notes
-docs/superpowers/
-
 .DS_Store
 __pycache__/
 *.egg-info/
@@ -9,6 +6,3 @@ __pycache__/
 *.wav
 build/
 dist/
-
-# Subagent-driven-development scratch workspace
-.superpowers/
